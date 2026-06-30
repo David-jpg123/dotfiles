@@ -1,0 +1,202 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "modules-left": [
+    "custom/null",
+    "clock",
+    "hyprland/language",
+    "group/hardware",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "mpris",
+    "tray",
+    "network",
+    "pulseaudio",
+    "custom/swaync",
+    "battery",
+    "group/power",
+    "custom/null"
+  ],
+  "custom/null": {
+    "format": "   ",
+    "tooltip": false
+  },
+  "hyprland/language": {
+    "format": "  {short}",
+    "tooltip": true,
+    "tooltip-format": "Layout: {full}"
+  },
+  "custom/swaync": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/swaync-waybar.sh",
+    "interval": 2,
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d",
+    "tooltip": false
+  },
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/uptime",
+      "memory",
+      "cpu",
+      "load"
+    ],
+    "drawer": {
+      "transition-duration": 500
+    },
+    "format": {},
+    "tooltip": false
+  },
+  "custom/uptime": {
+    "exec": "uptime -p | sed 's/up //' | awk '{d=0;h=0;m=0; for(i=1;i<=NF;i++){if($i~/day/)d=$(i-1);if($i~/hour/)h=$(i-1);if($i~/minute/)m=$(i-1)} t=d*24+h; printf \"  %d:%02d Uptime\", t, m}'",
+    "interval": 60,
+    "format": "{}",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "  {usage}%",
+    "interval": 2,
+    "tooltip": true
+  },
+  "load": {
+    "interval": 5,
+    "format": "󰊚 {load1}",
+    "tooltip": true
+  },
+  "memory": {
+    "format": "  {percentage}%",
+    "interval": 2,
+    "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
+  },
+  "mpris": {
+    "format": "{status_icon} | {artist} | {title} | [{position}/{length}] | {player_icon} {player}",
+    "format-paused": "{status_icon} | <i>{artist} </i>|<i> {title} </i>|<i> [{position}/{length}] </i> | {player_icon} {player}",
+    "interval": 1,
+    "max-length": 40,
+    "player-icons": {
+      "default": "",
+      "mpv": " ",
+      "vlc": "󰕼 ",
+      "chromium": "",
+      "firefox": ""
+    },
+    "status-icons": {
+      "paused": "",
+      "playing": "",
+      "stopped": ""
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "  Muted",
+    "format-icons": {
+      "muted": "",
+      "headphone": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        ""
+      ]
+    },
+    "scroll-step": 2,
+    "on-click": "pavucontrol",
+    "on-click-right": "amixer set Master toggle"
+  },
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "  Ethernet",
+    "format-disconnected": "󰤮  Disconnected",
+    "tooltip-format-wifi": "{essid} {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}",
+    "tooltip-format-disconnected": "No connection",
+    "interval": 5
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "🔋 {capacity}%",
+    "format-charging": "⚡ {capacity}%",
+    "interval": 1
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8
+  },
+  "group/power": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/power-shutdown",
+      "custom/power-logout",
+      "custom/power-suspend",
+      "custom/power-reboot"
+    ]
+  },
+  "custom/power-shutdown": {
+    "format": "⏻ ",
+    "tooltip": false,
+    "on-click": "systemctl poweroff",
+    "interval": "once"
+  },
+  "custom/power-reboot": {
+    "format": "󰜉",
+    "tooltip": false,
+    "on-click": "systemctl reboot",
+    "interval": "once"
+  },
+  "custom/power-suspend": {
+    "format": "⏾",
+    "tooltip": false,
+    "on-click": "systemctl suspend",
+    "interval": "once"
+  },
+  "custom/power-logout": {
+    "format": "󰗽",
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit",
+    "interval": "once"
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 35,
+    "icon": true,
+    "icon-size": 18,
+    "separate-outputs": true
+  },
+  "clock": {
+    "interval": 60,
+    "format": "  {:%H:%M}",
+    "format-alt": "󰃭  {:%A, %B %d, %Y (%R)}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down"
+    }
+  }
+}

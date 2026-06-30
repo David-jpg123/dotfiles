@@ -1,0 +1,6 @@
+#!/bin/bash
+# Generamos el nombre con la fecha correctamente
+NOMBRE_ARCHIVO="grabacion_$(date +%d-%m-%Y_%H-%M-%S).mp4"
+
+# Ejecutamos wf-recorder apuntando a tu audio interno
+wf-recorder --audio=alsa_output.usb-DeSheng_Electronics_Inc._KORP_THALLIUM-00.analog-stereo.monitor -f "$HOME/Videos/$NOMBRE_ARCHIVO"

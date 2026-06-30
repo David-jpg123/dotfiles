@@ -1,0 +1,174 @@
+* {
+    font: normal 13px "ComicShannsMono Nerd Font", "Noto Color Emoji";
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #FFFFFF;
+    color: #eeeeee;
+    margin: 0px;
+    border-radius: 0px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+#clock,
+#language,
+#window,
+#custom-uptime,
+#memory,
+#cpu,
+#load,
+#mpris,
+#pulseaudio,
+#network,
+#battery,
+#tray,
+#custom-theme,
+#custom-swaync,
+#custom-power-shutdown,
+#custom-power-reboot,
+#custom-power-suspend,
+#custom-power-logout,
+#workspaces {
+    background-color: #d3e7f4;
+    padding: 4px 12px;
+    margin: 0px 3px;
+    margin-top: 5px;
+    border-radius: 10px 10px 0px 0px;
+    transition: all 0.2s ease;
+}
+
+#clock,
+#language,
+#window,
+#custom-uptime,
+#memory,
+#cpu,
+#load,
+#pulseaudio,
+#network,
+#battery,
+#custom-theme,
+#custom-swaync,
+#tray {
+    color: #000d1a;
+}
+
+#mpris {
+    color: #001a34;
+}
+#custom-power-shutdown,
+#custom-power-reboot,
+#custom-power-suspend,
+#custom-power-logout {
+    color: #f54c4c;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 5px;
+    padding: 4px 10px;
+}
+
+#custom-power-shutdown:hover,
+#custom-power-reboot:hover,
+#custom-power-suspend:hover,
+#custom-power-logout:hover {
+    background-color: #f54c4c;
+    color: #242a3d;
+}
+
+#workspaces {
+    background-color: rgba(165, 226, 255, 0.85);
+    padding: 3px 6px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: #758c96;
+    padding: 2px 8px;
+    margin: 0 2px;
+    font-size: 16px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background-color: #25455a;
+    color: #a6c9f7;
+}
+
+#workspaces button.active {
+    background-color: #2f4469;
+    color: #84ccff;
+    border-bottom: 2px solid #2f4469;
+    border-radius: 6px;
+    font: bold 20px "ComicShannsMono Nerd Font", "Noto Color Emoji";
+}
+
+#workspaces button.urgent {
+    background-color: #f54c4c;
+    color: #11111B;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    color: #f9e2af;
+}
+
+#battery.critical {
+    color: #f54c4c;
+}
+
+#battery.charging {
+    color: #89b4fa;
+}
+
+#pulseaudio.muted {
+    color: #f54c4c;
+}
+
+#network.disconnected {
+    color: #f54c4c;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #f54c4c;
+}
+
+tooltip {
+    background-color: #11111B;
+    border: 1px solid #3a3a55;
+    border-radius: 10px;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: #eeeeee;
+    font: normal 13px "ComicShannsMono Nerd Font", "Noto Color Emoji";
+}
+
+#mode {
+    background-color: #f54c4c;
+    color: #11111B;
+    padding: 4px 12px;
+    margin: 5px 3px;
+    border-radius: 10px;
+    font: bold 13px "ComicShannsMono Nerd Font", "Noto Color Emoji";
+}
+
+
+window#waybar.fullscreen {
+    background: transparent;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}

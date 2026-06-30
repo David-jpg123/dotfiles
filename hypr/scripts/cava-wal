@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# 1. Importar los colores de Pywal
+if [ -f "$HOME/.cache/wal/colors.sh" ]; then
+    source "$HOME/.cache/wal/colors.sh"
+else
+    echo "Error: No se encontró el archivo de colores de Pywal. Ejecuta 'wal' primero."
+    exit 1
+fi
+
+# 2. Combinar tu configuración base con los colores dinámicos en un archivo temporal
+# Esto lee tu config normal y le añade al final los colores reales en HEX
+cat <<EOF > "$HOME/.cache/wal/cava-dynamic.conf"
+# Copia la configuración base si existe
+\$(cat "$HOME/.config/cava/config" 2>/dev/null)
+
+[color]
+gradient = 1
+gradient_count = 4
+gradient_color_1 = '$color4'
+gradient_color_2 = '$color3'
+gradient_color_3 = '$color2'
+gradient_color_4 = '$color0'
+EOF
+
+# 3. Lanzar CAVA apuntando al archivo temporal con los colores reales
+cava -p "$HOME/.cache/wal/cava-dynamic.conf"
